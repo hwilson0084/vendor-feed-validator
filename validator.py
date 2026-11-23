@@ -1,0 +1,23 @@
+import pandas as pd
+
+df = pd.read_csv("sample_vendor_feed.csv")
+
+errors = []
+
+for _, row in df.iterrows():
+
+    if pd.isna(row["UPC"]):
+        errors.append({
+            "SKU": row["SKU"],
+            "Error": "Missing UPC"
+        })
+
+    if pd.isna(row["Price"]):
+        errors.append({
+            "SKU": row["SKU"],
+            "Error": "Missing Price"
+        })
+
+results = pd.DataFrame(errors)
+
+print(results)
