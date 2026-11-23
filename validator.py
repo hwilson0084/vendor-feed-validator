@@ -20,4 +20,7 @@ for _, row in df.iterrows():
 
 results = pd.DataFrame(errors)
 
+results.to_csv("exception_report.csv", index=False)
+
 print(results)
+print("Validation complete")
