@@ -17,7 +17,11 @@ for _, row in df.iterrows():
             "SKU": row["SKU"],
             "Error": "Missing Price"
         })
-
+    if pd.isna(row["Description"]):
+        errors.append({
+            "SKU": row["SKU"],
+            "Error": "Missing Description"
+        })
 results = pd.DataFrame(errors)
 
 results.to_csv("exception_report.csv", index=False)
